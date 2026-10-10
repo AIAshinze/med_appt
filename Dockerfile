@@ -1,20 +1,26 @@
-FROM node:22-bookworm-slim AS build
+# Use official Node.js image as the base
+FROM node:20
 
-WORKDIR /app
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+# Copy package.json and package-lock.json to container
+COPY package*.json ./
 
+# Install dependencies
+RUN npm install
+
+# Copy rest of the application to container
 COPY . .
+
+# Build the React/Vite application
 RUN npm run build
 
-FROM node:22-bookworm-slim AS production
+# Install serve to serve the production build
+RUN npm install -g serve
 
-WORKDIR /app
-RUN npm install --global serve
+# Expose the port your app runs on
+EXPOSE 4173
 
-COPY --from=build /app/server/build ./build
-
-EXPOSE 3000
-
-CMD ["serve", "--single", "--listen", "3000", "build"]
+# Command to run your application
+CMD ["serve", "-s", "server/build", "-l", "4173"]
