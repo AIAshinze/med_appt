@@ -1,0 +1,17 @@
+{
+  "name": "StayHealthy",
+  "short_name": "StayHealthy",
+  "description": "Find doctors and manage your appointments with StayHealthy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2190FF",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
