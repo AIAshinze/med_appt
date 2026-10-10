@@ -247,6 +247,15 @@ Base URL: `http://localhost:8181`
   npm run build
   ```
 
+- **Build and run the production client with Docker**:
+
+  ```bash
+  docker build -t stayhealthy .
+  docker run --rm -p 3000:3000 stayhealthy
+  ```
+
+  *The production client will be available at [http://localhost:3000](http://localhost:3000).*
+
 - **Preview production build**:
 
   ```bash
